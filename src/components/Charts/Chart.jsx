@@ -1,7 +1,18 @@
-import React from 'react';
+import React,{ useEffect, useState } from 'react';
+// API
+import { fetchDailyData } from "../../services/apiCall"
 const Chart = () => {
+    const [dailyData, setDailyData] = useState([]);
+    useEffect(() => {
+        const dailyDataGetter = async()=>{
+            setDailyData(await fetchDailyData())
+        }
+        dailyDataGetter()
+    })
     return (
-        <h1>chart</h1>
+        <div>
+            {dailyData.length > 0 ? "" : null}
+        </div>
     );
 }
  

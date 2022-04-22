@@ -7,3 +7,7 @@ export const fetchData = async () => {
     return response.data
 }
 
+export const fetchDailyData = async () => {
+    const response = await axios.get(`${url}/daily`)
+    return response.data
+}
