@@ -5,9 +5,10 @@ import Chart from '../src/components/Charts/Chart'
 import CountryPicker from '../src/components/CountryPicker/CountryPicker'
 // API
 import { fetchData } from '../src/services/apiCall'
-
+import { fetchCountryData } from '../src/services/apiCall';
 const App = () => {
     const [fetchedData,setFetchedData] = useState(false)
+    const [selectedCountry , setSelectedCountry] = useState("")
 
     useEffect(()=>{
         const dataGetter = async() => {
@@ -18,10 +19,16 @@ const App = () => {
         dataGetter()
 
     },[])
+
+    const countryChangeHandler = (countryChangeHandler) =>{
+        setSelectedCountry(countryChangeHandler);
+        
+    }
+
     return (
         <div className="app">
             <Card fetchedData={fetchedData}/>
-            <CountryPicker/>
+            <CountryPicker countryChangeHandler={countryChangeHandler}/>
             <Chart/>         
         </div>
     );
