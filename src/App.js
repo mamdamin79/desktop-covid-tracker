@@ -21,8 +21,8 @@ const App = () => {
     return (
         <div className="app">
             <Card fetchedData={fetchedData}/>
-            <Chart/>
-            <CountryPicker/>            
+            <CountryPicker/>
+            <Chart/>         
         </div>
     );
 }

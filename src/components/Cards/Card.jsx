@@ -6,24 +6,28 @@ const Card = ({fetchedData}) => {
     if(fetchedData){
         return (
             <div className={styles.container}>
-                <div className={styles.cart}>
+                <div className={`${styles.cart} ${styles.infected}`}>
                     <p>Infected</p>
                     <h3>
-                        <CountUp start="0" end={fetchedData.confirmed.value}/>
+                        <CountUp start="0" end={fetchedData.confirmed.value} separator="," duration={2.5}/>
                     </h3>
-                    <p>last updated</p>
+                    <p>{new Date(fetchedData.lastUpdate).toDateString()}</p>
                     <p>Number of active cases of COVID-19</p>
                 </div>
-                <div className={styles.cart}>
-                    <p>Recoverd</p>
-                    <h3>94890</h3>
-                    <p>last updated</p>
-                    <p>Number of recoveries cases from COVID-19</p>
-                </div>
-                <div className={styles.cart}>
+                <div className={`${styles.cart} ${styles.recovered}`}>
+                    <p>Recovered</p>
+                    <h3>
+                        <CountUp start="0" end={fetchedData.recovered.value} separator="," duration={2.5}/>
+                    </h3>
+                    <p>{new Date(fetchedData.lastUpdate).toDateString()}</p>
+                    <p>Number of deaths caused by COVID-19</p>
+                </div>                
+                <div className={`${styles.cart} ${styles.deaths}`}>
                     <p>Deaths</p>
-                    <h3>94890</h3>
-                    <p>last updated</p>
+                    <h3>
+                        <CountUp start="0" end={fetchedData.deaths.value} separator="," duration={2.5}/>
+                    </h3>
+                    <p>{new Date(fetchedData.lastUpdate).toDateString()}</p>
                     <p>Number of deaths caused by COVID-19</p>
                 </div>
             </div>
