@@ -8,7 +8,7 @@ import { fetchData } from '../src/services/apiCall'
 import { fetchCountryData } from '../src/services/apiCall';
 const App = () => {
     const [fetchedData,setFetchedData] = useState(false)
-    const [selectedCountry , setSelectedCountry] = useState("")
+    const [selectedCountryData , setSelectedCountryData] = useState(false)
 
     useEffect(()=>{
         const dataGetter = async() => {
@@ -20,14 +20,16 @@ const App = () => {
 
     },[])
 
-    const countryChangeHandler = (countryChangeHandler) =>{
-        setSelectedCountry(countryChangeHandler);
-        
+    const countryChangeHandler = async(country) =>{
+        const countryData = await fetchCountryData(country);
+        console.log(countryData);
+        setSelectedCountryData(countryData);
+
     }
 
     return (
         <div className="app">
-            <Card fetchedData={fetchedData}/>
+            <Card fetchedData={fetchedData} selectedCountryData={selectedCountryData}/>
             <CountryPicker countryChangeHandler={countryChangeHandler}/>
             <Chart/>         
         </div>

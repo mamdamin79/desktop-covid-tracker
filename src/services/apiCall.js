@@ -18,6 +18,6 @@ export const fetchCountries = async () =>{
 }
 
 export const fetchCountryData = async (country) =>{
-    const response = await axios.get(`${url}/countries/[${country}]`)
+    const response = await axios.get(`${url}/countries/${country}`)
     return response.data
 }
